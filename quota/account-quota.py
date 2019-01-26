@@ -62,16 +62,11 @@ headers = {'X-Auth-Token':token}
 res_head = requests.head(URL,headers=headers)
 print(res_head.status_code)
 print(res_head.headers)
+print(res_get.headers['X-Account-Meta-Quota-Bytes'])
 # get quota and container list
 headers = {'X-Auth-Token':token,"Content-Type": 'application/json'}
 res_get = requests.get(URL,headers=headers)
 print(res_get.status_code)
 print(res_get.headers)
+print(res_get.headers['X-Account-Meta-Quota-Bytes'])
 print(res_get.text)
-
-# URL = 'http://192.168.0.50:9292/v2/images'
-# headers = {'X-Auth-Token':token,"Content-Type": 'application/json'}
-# res = requests.get(URL,headers=headers)
-# print(res.text)
-# print(res.headers)
-# print(res.status_code)
