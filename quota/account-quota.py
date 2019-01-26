@@ -49,20 +49,23 @@ print(token)
 # URL = 'http://192.168.0.50:8080/v1/AUTH_f04ec0abf3d1460dad82608bb03af589'
 
 # utest1 publicURL
-controller="192.168.0.50"
-URL = "http://" + controller + ":8080/v1/AUTH_e8ed1722599643b5802a322341b4e02c"
+swiftproxy="192.168.0.50"
+storageURL = "http://" + swiftproxy + ":8080/v1/AUTH_e8ed1722599643b5802a322341b4e02c"
 # print(URL)
 
 # set quota
-headers = {'X-Auth-Token':token,"Content-Type": 'application/json', "X-Account-Meta-Quota-Bytes": "1234567"}
+quotabytes = "654321"
+headers = {'X-Auth-Token':token,"Content-Type": 'application/json', "X-Account-Meta-Quota-Bytes": quotabytes}
 res = requests.post(URL,headers=headers)
 print(res.status_code)
+
 # get quota
 headers = {'X-Auth-Token':token}
 res_head = requests.head(URL,headers=headers)
 print(res_head.status_code)
 print(res_head.headers)
 print(res_get.headers['X-Account-Meta-Quota-Bytes'])
+
 # get quota and container list
 headers = {'X-Auth-Token':token,"Content-Type": 'application/json'}
 res_get = requests.get(URL,headers=headers)
